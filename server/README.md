@@ -49,34 +49,46 @@ server/
 1. **Clonar el repositorio:**
    Clonar el repositorio a tu maquina
 
-   ```bash
-   git clone https://github.com/DiegoB0/ReelStream.git
-   cd ReelStream
-   ```
+`En bash`
 
-   ```powershell
-   git clone https://github.com/DiegoB0/ReelStream.git
-   cd ReelStream
-   ```
+```bash
+git clone https://github.com/DiegoB0/ReelStream.git
+cd ReelStream
+```
+
+`En powershell`
+
+```powershell
+git clone https://github.com/DiegoB0/ReelStream.git
+cd ReelStream
+```
 
 2. **Crear un archivo`.env`:**
    Copiar las variables del archivo env_example.txt al nuevo archivo llamado .env al inicio del proyecto
 
-   ```bash
-   cat env_example.txt > .env
-   ```
+`En bash`
 
-   ```powershell
-   Get-Content env_example.txt | ForEach-Object { $_ | Out-File -FilePath .env -Append -Encoding utf8 }
-   ```
+```bash
+cat env_example.txt > .env
+```
+
+`En powershell`
+
+```powershell
+Get-Content env_example.txt | ForEach-Object { $_ | Out-File -FilePath .env -Append -Encoding utf8 }
+```
 
 ### Ejecutar el Servidor
 
 Construir y ejecutar los contenedores de Docker:
 
+`En bash`
+
 ```bash
 docker-compose up --build -d
 ```
+
+`En powershell`
 
 ```powershell
 docker-compose up --build -d
@@ -86,9 +98,13 @@ docker-compose up --build -d
 
 Para detener el servidor:
 
+`En bash`
+
 ```bash
 docker-compose down
 ```
+
+`En powershell`
 
 ```powershell
 docker-compose down
@@ -101,30 +117,38 @@ docker-compose down
 - **Descripción:** Recuperar una lista de todas las películas.
 - **Ejemplo de uso:**
 
-  ```bash
-  curl http://localhost:5000/api/movies
-  ```
+`En bash`
 
-  ```powershell
-  curl http://localhost:5000/api/movies
-  ```
+```bash
+curl http://localhost:5000/api/movies
+```
+
+`En powershell`
+
+```powershell
+curl http://localhost:5000/api/movies
+```
 
 ### POST /api/movies
 
 - **Descripción:** Agregar una nueva película.
 - **Ejemplo de uso:**
 
-  ```bash
-  curl -X POST http://localhost:5000/api/movies \
-  -H 'Content-Type: application/json' \
-  -d '{"title":"Inception","description":"Un thriller que desafía la mente","genre":"Ciencia Ficción","year":2010}'
-  ```
+`En bash`
 
-  ```powershell
-  curl -X POST http://localhost:5000/api/movies `
-  -H 'Content-Type: application/json' `
-  -d '{"title":"Inception","description":"Un thriller que desafía la mente","genre":"Ciencia Ficción","year":2010}'
-  ```
+```bash
+curl -X POST http://localhost:5000/api/movies \
+-H 'Content-Type: application/json' \
+-d '{"title":"Inception","description":"Un thriller que desafía la mente","genre":"Ciencia Ficción","year":2010}'
+```
+
+`En powershell`
+
+```powershell
+curl -X POST http://localhost:5000/api/movies `
+-H 'Content-Type: application/json' `
+-d '{"title":"Inception","description":"Un thriller que desafía la mente","genre":"Ciencia Ficción","year":2010}'
+```
 
 ## Notas Adicionales
 
