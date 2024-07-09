@@ -26,6 +26,7 @@ Para ejecutar este proyecto, necesitarás las siguientes herramientas instaladas
 
 ### Estructura del Proyecto
 
+```lua
 server/
 ├── src/
 │ ├── config/
@@ -41,6 +42,7 @@ server/
 ├── Dockerfile
 ├── docker-compose.yml
 └── package.json
+```
 
 ### Instrucciones de Configuración
 
