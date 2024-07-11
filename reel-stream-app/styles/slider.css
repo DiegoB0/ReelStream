@@ -1,0 +1,23 @@
+.slick-slider {
+	margin: 0 -8px; /* Adjust margin as needed */
+	overflow: hidden; /* Prevents overflow issues */
+}
+
+.slick-slide {
+	padding: 0 8px; /* Adjust padding as needed */
+}
+
+.slick-prev,
+.slick-next {
+	z-index: 1; /* Ensure navigation buttons are above slides */
+}
+
+.slick-prev:before,
+.slick-next:before {
+	color: #fff; /* Change arrow color */
+	font-size: 20px; /* Adjust arrow size */
+}
+
+.slick-dots {
+	bottom: -30px; /* Adjust dots position */
+}
