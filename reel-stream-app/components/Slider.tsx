@@ -2,8 +2,7 @@ import axios from 'axios';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Import icons
-import NavBar from '../components/NavBar';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 type Movie = {
 	id: number;
@@ -31,16 +30,15 @@ const Slider: React.FC<HomeProps> = ({ featuredMovies }) => {
 		);
 	};
 
-	// Automatic slide change every 5 seconds
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setCurrentIndex((prevIndex) =>
 				prevIndex === totalSlides - 1 ? 0 : prevIndex + 1
 			);
-		}, 3000); // Change slide every 5 seconds
+		}, 5000);
 
-		return () => clearInterval(interval); // Cleanup interval on unmount
-	}, [totalSlides]); // Re-run effect if totalSlides changes
+		return () => clearInterval(interval);
+	}, [totalSlides]);
 
 	return (
 		<div className="bg-neutral-950 min-h-screen text-white">
@@ -57,7 +55,7 @@ const Slider: React.FC<HomeProps> = ({ featuredMovies }) => {
 				<div className="relative overflow-hidden">
 					<div className="flex items-center justify-center">
 						<button
-							className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-purple-500 p-2 rounded-full z-10 text-white border-2 border-transparent hover:border-white transition-all duration-200 ease-in-ou"
+							className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-purple-500 p-2 rounded-full z-10 text-white border-2 border-transparent hover:border-white hover:bg-purple-600 transition-all duration-200 ease-in-ou"
 							onClick={prevSlide}
 						>
 							<FaChevronLeft className="text-white" />
@@ -74,20 +72,28 @@ const Slider: React.FC<HomeProps> = ({ featuredMovies }) => {
 								{featuredMovies.map((movie, index) => (
 									<div
 										key={movie.id}
-										className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4"
+										className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 relative"
+										style={{ cursor: 'pointer' }}
 									>
 										<img
 											src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 											alt={movie.title}
-											className="w-full h-72 object-cover rounded-lg mb-2"
+											className="w-full h-72 object-cover rounded-lg mb-2 opacity-75 hover:opacity-100 transition-opacity duration-300"
 										/>
+										<div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+											<div className="absolute inset-0 bg-black opacity-25 hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+											<button className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 z-10">
+												Ver Ahora
+											</button>
+										</div>
+
 										<h2 className="text-lg font-bold">{movie.title}</h2>
 									</div>
 								))}
 							</div>
 						</div>
 						<button
-							className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-purple-500 p-2 rounded-full z-10 text-white border-2 border-transparent hover:border-white transition-all duration-200 ease-in-out"
+							className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-purple-500 p-2 rounded-full z-10 text-white border-2 border-transparent hover:border-white hover:bg-purple-600 transition-all duration-200 ease-in-out"
 							onClick={nextSlide}
 						>
 							<FaChevronRight className="text-white" />
