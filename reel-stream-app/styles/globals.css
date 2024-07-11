@@ -35,3 +35,33 @@ body {
 		text-wrap: balance;
 	}
 }
+
+@keyframes shine {
+	0% {
+		background-position: 0%;
+	}
+	100% {
+		background-position: 200%;
+	}
+}
+
+.text-gradient {
+	background: linear-gradient(90deg, #a855f7, #d946ef, #a855f7);
+	background-size: 200% 200%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shine 3s linear infinite;
+}
+
+.cl-internal-180wb59 {
+	display: none;
+}
+
+.cl-form .cl-formButtonPrimary {
+	background-color: #a855f7;
+	transition: background-color 0.3s ease;
+}
+
+.cl-form .cl-formButtonPrimary:hover {
+	background-color: #9333ea;
+}
