@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
@@ -41,17 +42,14 @@ const Slider: React.FC<HomeProps> = ({ featuredMovies }) => {
 	}, [totalSlides]);
 
 	return (
-		<div className="bg-neutral-950 min-h-screen text-white">
+		<div className="bg-neutral-950  text-white">
 			<Head>
 				<title>ReelStream</title>
 				<meta name="description" content="A Netflix-like streaming platform" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className="container mx-auto py-8">
-				<h1 className="text-4xl font-bold mb-4 p-4 text-neutral-700">
-					Top Movies
-				</h1>
+			<main className="container mx-auto">
 				<div className="relative overflow-hidden">
 					<div className="flex items-center justify-center">
 						<button

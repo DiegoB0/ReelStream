@@ -1,0 +1,10 @@
+config:
+  target: 'http://localhost:3000' # URL de tu aplicación en desarrollo
+  phases:
+    - duration: 60 # Duración de la prueba en segundos
+      arrivalRate: 5 # Número de usuarios virtuales que llegan por segundo
+
+scenarios:
+  - flow:
+      - get:
+          url: '/api/movies?feature=popular'

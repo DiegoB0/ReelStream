@@ -1,4 +1,4 @@
-import { RedirectToSignIn, SignedIn, SignedOut, useUser } from '@clerk/nextjs';
+import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/nextjs';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import AuthSlider from '../components/AuthSlider';
@@ -16,8 +16,7 @@ type GenreMovies = {
 	movies: Movie[];
 };
 
-const DashboardPage: React.FC = () => {
-	const { user } = useUser();
+function Films() {
 	const [genreMovies, setGenreMovies] = useState<GenreMovies[]>([]);
 	const [loading, setLoading] = useState(true);
 
@@ -25,18 +24,18 @@ const DashboardPage: React.FC = () => {
 		const fetchData = async () => {
 			try {
 				await new Promise((resolve) => setTimeout(resolve, 500));
-
 				const genreRequests = [
-					{ genre: 'Top Movies', feature: 'top' },
-					{ genre: 'Popular Movies', feature: 'popular' },
-					{ genre: 'Upcoming Movies', feature: 'upcoming' },
+					{ genre: 'Horror', genreId: 27 },
+					{ genre: 'Comedy', genreId: 35 },
+					{ genre: 'Action', genreId: 28 },
+					{ genre: 'Drama', genreId: 18 },
 				];
 
 				const genreMoviesData = await Promise.all(
 					genreRequests.map(async (genreRequest) => {
 						try {
 							const res = await axios.get(
-								`${process.env.NEXT_PUBLIC_BASE_URL}/api/movies?feature=${genreRequest.feature}`
+								`${process.env.NEXT_PUBLIC_BASE_URL}/api/movies?feature=byGenre&genreId=${genreRequest.genreId}`
 							);
 							return { genre: genreRequest.genre, movies: res.data };
 						} catch (apiError) {
@@ -64,17 +63,13 @@ const DashboardPage: React.FC = () => {
 		<div>
 			<SignedIn>
 				<div className="container mx-auto">
-					<h1 className="font-bold text-2xl p-5 text-center">
-						Welcome, {user?.fullName}!
-					</h1>
-
 					{loading ? (
 						<SkeletonLoader />
 					) : genreMovies.length > 0 ? (
 						genreMovies.map((genreSection) => (
 							<div key={genreSection.genre} className="mx-auto py-8">
 								<h1 className="text-4xl font-bold text-neutral-700 p-4">
-									{genreSection.genre}
+									{genreSection.genre} Movies
 								</h1>
 								<AuthSlider featuredMovies={genreSection.movies} />
 							</div>
@@ -89,6 +84,6 @@ const DashboardPage: React.FC = () => {
 			</SignedOut>
 		</div>
 	);
-};
+}
 
-export default DashboardPage;
+export default Films;

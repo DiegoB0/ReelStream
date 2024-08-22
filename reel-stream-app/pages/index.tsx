@@ -19,9 +19,10 @@ const Home: React.FC<HomeProps> = ({ featuredMovies }) => {
 	return (
 		<>
 			<div
-				className="container mx-auto h-[400px] relative z-0 flex flex-col justify-center bg-cover bg-center bg-no-repeat"
+				className="relative z-0 flex flex-col justify-center bg-cover bg-center bg-no-repeat"
 				style={{
 					backgroundImage: `url(${moviesBg.src})`,
+					height: '400px', // Fixed height for testing
 				}}
 			>
 				<div className="text-center mb-8 bg-black bg-opacity-80 h-[300px] flex flex-col items-center justify-center">
@@ -44,6 +45,9 @@ const Home: React.FC<HomeProps> = ({ featuredMovies }) => {
 				</div>
 			</div>
 			<div className="container mx-auto py-8 relative z-0">
+				<h1 className="text-4xl font-bold mb-4 p-4 text-neutral-700">
+					Top Movies
+				</h1>
 				<Slider featuredMovies={featuredMovies} />
 			</div>
 		</>
